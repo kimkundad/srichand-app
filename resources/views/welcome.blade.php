@@ -37,7 +37,9 @@
         html {
             font-family: 'Prompt', sans-serif !important;
         }
-
+.card .card-body {
+    padding: 0.5rem 2.25rem;
+}
         .seat-zones {
             display: flex;
             justify-content: center;
@@ -87,9 +89,12 @@
 
         @media (min-width: 992px) {
             .w-lg-650px {
-                width: 500px !important;
+                width: 480px !important;
             }
         }
+        .bgi-size-cover {
+    background-size: auto;
+}
     </style>
 </head>
 <!--end::Head-->
@@ -102,20 +107,24 @@
         <style>
             body {
                 background-image: url('img/background.png');
+                background-size: cover;
             }
 
             [data-theme="dark"] body {
                 background-image: url('img/background.png');
+                background-size: cover;
             }
         </style>
         <!--end::Page bg image-->
         <!--begin::Authentication - Signup Welcome Message -->
         <div class="d-flex flex-column flex-center flex-column-fluid">
             <!--begin::Content-->
+
+            <div> <img src="{{ url('img/logo.png') }}"  style="height: 75px; margin-top: 60px"> </div>
             <div class="d-flex flex-column flex-center p-10">
                 <!--begin::Wrapper-->
-                <div class="card card-flush w-lg-650px py-5" style="background-color: #a3d4eac9;">
-                    <div class="card-body py-15 py-lg-20">
+                <div class="card card-flush w-lg-650px py-5" style="background-color: #a3d4eac9; ">
+                    <div class="card-body  " style="padding-top: 10px; padding-bottom: 0px;">
 
 
                         <!--begin::Alert-->
@@ -123,14 +132,14 @@
                         <form id="registrationForm" class="form"  method="POST" action="{{ url('register') }}">
                             @csrf
                             <div class="fv-row mb-7">
-                                <label class="fs-2 fw-semibold form-label mt-3" style="padding-left: 15px">
+                                <label class="fs-2 fw-semibold form-label " style="padding-left: 15px">
                                     <span>ชื่อ-นามสกุล</span>
                                 </label>
                                 <input type="text" class="form-control form-control-solid" name="name"
                                     placeholder="ชื่อ-นามสกุล" />
                             </div>
                             <div class="fv-row mb-7">
-                                <label class="fs-2 fw-semibold form-label mt-3" style="padding-left: 15px">
+                                <label class="fs-2 fw-semibold form-label " style="padding-left: 15px">
                                     <span>เบอร์โทรศัพท์</span>
                                 </label>
                                 <input type="text" class="form-control form-control-solid" name="phone_number"
@@ -138,7 +147,7 @@
                             </div>
 
                             <div class="fv-row text-center mb-7">
-                                <label class="fs-2 fw-semibold form-label mt-3">
+                                <label class="fs-2 fw-semibold form-label ">
                                     <span>เลือกโซนที่นั่ง</span>
                                 </label>
                                 <div class="seat-zones">
@@ -162,7 +171,7 @@
                             </div>
 
                             <div class="fv-row mb-7">
-                                <label class="fs-2 fw-semibold form-label mt-3" style="padding-left: 15px">
+                                <label class="fs-2 fw-semibold form-label " style="padding-left: 15px">
                                     <span>เลขที่นั่ง</span>
                                 </label>
                                 <input type="text" class="form-control form-control-solid" name="seat_number"
@@ -170,7 +179,7 @@
                             </div>
 
                             <br>
-                            <div class="fv-row mb-7">
+                            <div class="fv-row ">
                                 <img src="{{ url('img/button.png') }}" style="width: 100%; cursor: pointer;"
                                     onclick="submitForm();" />
                             </div>
