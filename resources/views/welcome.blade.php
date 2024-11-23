@@ -95,6 +95,36 @@
         .bgi-size-cover {
     background-size: auto;
 }
+
+        .bottom-buttons {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: transparent; /* ให้พื้นหลังโปร่งใส */
+    padding: 0px;
+}
+
+        .bottom-buttons button {
+            flex: none;
+            margin: 0px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            min-width: 450px
+        }
+
+        .btn-register {
+            background: linear-gradient(90deg, #00a7eb, #005dbc);
+        }
+
+        .btn-seat-map {
+            background: #001f54;
+        }
     </style>
 </head>
 <!--end::Head-->
@@ -194,6 +224,27 @@
             <!--end::Content-->
         </div>
         <!--end::Authentication - Signup Welcome Message-->
+
+
+         <!--begin::Bottom Buttons-->
+    <div class="bottom-buttons">
+        <button
+        style="
+            border-top-left-radius: 30px;
+            "
+        class="btn-register"
+        onclick="submitForm();"
+        >ลงทะเบียน</button>
+        <button
+         style="
+            border-top-right-radius: 30px;
+            "
+        class="btn-seat-map"
+        onclick="window.location.href='/seat-map';"
+        >แผงที่นั่ง</button>
+    </div>
+    <!--end::Bottom Buttons-->
+
     </div>
     <!--end::Root-->
     <!--begin::Javascript-->
@@ -207,6 +258,7 @@
     <!--end::Javascript-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+
     function submitForm() {
     const form = document.getElementById('registrationForm');
     const formData = new FormData(form);
@@ -224,15 +276,15 @@
                 Swal.fire({
                     title: 'สำเร็จ!',
                     text: data.message || 'ลงทะเบียนเรียบร้อยแล้ว',
-                    icon: 'success', // ใช้ไอคอน success สำหรับข้อความสำเร็จ
+                    icon: 'success',
                     confirmButtonText: 'ตกลง',
                 });
-                form.reset(); // ล้างฟอร์ม
+                form.reset();
             } else {
                 Swal.fire({
                     title: 'เกิดข้อผิดพลาด!',
-                    text: data.message || 'ไม่สามารถบันทึกข้อมูลได้',
-                    icon: 'error', // ใช้ไอคอน error สำหรับข้อความผิดพลาด
+                    text: data.message || 'ข้อมูลซ้ำ! ไม่สามารถลงทะเบียนได้',
+                    icon: 'error',
                     confirmButtonText: 'ตกลง',
                 });
             }
@@ -242,11 +294,12 @@
             Swal.fire({
                 title: 'เกิดข้อผิดพลาด!',
                 text: 'ไม่สามารถส่งข้อมูลได้',
-                icon: 'error', // ใช้ไอคอน error
+                icon: 'error',
                 confirmButtonText: 'ตกลง',
             });
         });
 }
+
 
 </script>
 </body>
